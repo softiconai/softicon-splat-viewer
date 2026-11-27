@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "softicon/splat-viewer",
+	"version": "1.0.0",
+	"title": "Splat Viewer",
+	"category": "media",
+	"description": "Show a 3D scan (Gaussian splat) that visitors can turn, zoom and walk through, with hotspots. Set it up right in the block editor.",
+	"keywords": [ "gaussian splat", "3d scan", "splat", "3d", "spz", "ply", "scan", "3d viewer" ],
+	"textdomain": "softicon-splat-viewer",
+	"attributes": {
+		"file": { "type": "object", "default": {} },
+		"transform": { "type": "object", "default": {} },
+		"camera": { "type": "object", "default": {} },
+		"hotspots": { "type": "array", "default": [] },
+		"poster": { "type": "object", "default": {} },
+		"loadMode": { "type": "string", "default": "visible" },
+		"quality": { "type": "string", "default": "auto" },
+		"height": { "type": "string", "default": "" },
+		"mobileHeight": { "type": "string", "default": "" },
+		"radius": { "type": "number", "default": 12 },
+		"background": { "type": "string", "default": "dark" },
+		"hotspotColor": { "type": "string", "default": "" },
+		"showReset": { "type": "boolean", "default": true },
+		"showFullscreen": { "type": "boolean", "default": true },
+		"showHotspotToggle": { "type": "boolean", "default": true },
+		"showAutoRotate": { "type": "boolean", "default": false },
+		"showModeSwitch": { "type": "boolean", "default": false }
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

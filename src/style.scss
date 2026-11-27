@@ -1,0 +1,424 @@
+// where the build folder is, for src/public-path.js when a JS combine
+// plugin moved view.js; WordPress makes this url absolute when it prints
+// the CSS inline
+:root {
+	// a name in the folder, never loaded (the minifier would turn ./ into /;
+	// webpack.config.js tells css-loader not to look for the file)
+	--alsv-build: url(./alsv);
+}
+
+// logical properties keep the layout right for RTL languages without an -rtl.css copy
+.alsv_viewer {
+	box-sizing: border-box;
+	overflow: hidden;
+	border-radius: var(--alsv-radius, 12px);
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	[hidden] {
+		display: none !important;
+	}
+}
+
+// the poster (render.php) until the viewer takes its place
+.alsv_stage {
+	position: relative;
+	isolation: isolate;
+	display: grid;
+	place-items: center;
+	height: min(var(--alsv-height, 480px), 100vh);
+	// the block's own color (--alsv-bg), or the dark gradient; Viewer.js snapshot() draws the same for the poster
+	background: var(--alsv-bg, radial-gradient(120% 90% at 50% 30%, #353b42, #121518));
+	color: #f3f5f7;
+
+	// phones: the block's phone height, or its height
+	@media (max-width: 600px) {
+		height: min(var(--alsv-height-m, var(--alsv-height, 480px)), 100vh);
+	}
+}
+
+.alsv_bg_light .alsv_stage {
+	background: radial-gradient(120% 90% at 50% 30%, #fff, #dfe3e7);
+	color: #1e2226;
+}
+
+.alsv_bg_transparent .alsv_stage {
+	background: transparent;
+}
+
+.alsv_poster {
+	position: absolute;
+	inset: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	margin: 0;
+	object-fit: cover;
+}
+
+// the viewer (src/viewer/Viewer.js) draws on this canvas over the poster
+.alsv_canvas {
+	position: absolute;
+	inset: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	touch-action: none;
+	cursor: grab;
+
+	&:active {
+		cursor: grabbing;
+	}
+
+	&:focus-visible {
+		box-shadow: inset 0 0 0 2px #fff;
+	}
+}
+
+// the poster fades once the scan is drawn
+.alsv_poster {
+	transition: opacity 0.4s ease;
+}
+
+.alsv_ready .alsv_poster {
+	opacity: 0;
+}
+
+.alsv_progress,
+.alsv_note {
+	position: absolute;
+	z-index: 2;
+	inset-inline: 50%;
+	inset-block-end: 16px;
+	width: max-content;
+	max-width: calc(100% - 32px);
+	padding: 6px 12px;
+	transform: translateX(-50%);
+	border-radius: 8px;
+	background: rgba(20, 24, 28, 0.72);
+	color: #f3f5f7;
+	font-size: 13px;
+	line-height: 1.4;
+	text-align: center;
+}
+
+.alsv_progress::after {
+	content: "";
+	display: block;
+	height: 3px;
+	margin-block-start: 6px;
+	border-radius: 2px;
+	background: linear-gradient(90deg, #f3f5f7 calc(var(--alsv-progress, 0) * 100%), rgba(255, 255, 255, 0.2) 0);
+}
+
+// hotspots (src/viewer/Spots.js): the layer lets drags through to the canvas, the hotspots themselves take them.
+// The viewer moves each one with transform; left and top stay physical, as the screen point is.
+.alsv_spots {
+	position: absolute;
+	z-index: 1;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+// the screen point is the hotspot's middle
+.alsv_spot {
+	position: absolute;
+	top: -14px;
+	left: -14px;
+	display: block;
+	width: 28px;
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	pointer-events: auto;
+	transition: opacity 0.2s ease;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.alsv_spot_dot {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	// the block's hotspot color (render.php), or white
+	border: 2px solid var(--alsv-spot, #fff);
+	border-radius: 50%;
+	background: rgba(20, 24, 28, 0.66);
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+	color: #fff;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1;
+	transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.alsv_spot_link .alsv_spot_dot {
+	border-style: double;
+	border-width: 4px;
+}
+
+.alsv_spot:hover .alsv_spot_dot,
+.alsv_spot_open .alsv_spot_dot {
+	transform: scale(1.12);
+	background: rgba(20, 24, 28, 0.9);
+}
+
+.alsv_spot:focus-visible .alsv_spot_dot {
+	outline: 2px solid var(--alsv-spot, #fff);
+	outline-offset: 3px;
+}
+
+// on top of a hotspot it overlaps
+.alsv_spot:hover,
+.alsv_spot:focus-visible,
+.alsv_spot_open {
+	z-index: 1;
+}
+
+// the title beside the hotspot, on hover and keyboard focus
+.alsv_spot_label {
+	position: absolute;
+	top: 2px;
+	left: 34px;
+	width: max-content;
+	max-width: 220px;
+	padding: 3px 8px;
+	border-radius: 6px;
+	background: rgba(20, 24, 28, 0.84);
+	color: #fff;
+	font-size: 13px;
+	line-height: 1.4;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.15s ease;
+}
+
+.alsv_spot:hover .alsv_spot_label,
+.alsv_spot:focus-visible .alsv_spot_label {
+	opacity: 1;
+}
+
+// the scan is between the hotspot and the camera
+.alsv_spot_behind {
+	opacity: 0.35;
+}
+
+// the card an info hotspot opens; a sheet along the bottom on narrow screens
+.alsv_popup {
+	position: absolute;
+	z-index: 3;
+	inset-block-start: 12px;
+	inset-inline-end: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	width: 300px;
+	max-width: calc(100% - 24px);
+	max-height: calc(100% - 24px);
+	overflow: auto;
+	padding: 14px 16px 16px;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+	color: #1e2226;
+	font-size: 14px;
+	line-height: 1.55;
+	text-align: start;
+
+	@media (max-width: 480px) {
+		inset-block: auto 8px;
+		inset-inline: 8px;
+		width: auto;
+		max-width: none;
+		max-height: 60%;
+	}
+}
+
+.alsv_popup_close {
+	position: absolute;
+	inset-block-start: 6px;
+	inset-inline-end: 6px;
+	width: 32px;
+	height: 32px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	font-size: 22px;
+	line-height: 1;
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		background: rgba(0, 0, 0, 0.07);
+	}
+
+	&:focus-visible {
+		outline: 2px solid currentcolor;
+	}
+}
+
+.alsv_popup_image {
+	display: block;
+	width: 100%;
+	max-width: none;
+	height: auto;
+	max-height: 180px;
+	margin: 0 0 4px;
+	border-radius: 6px;
+	object-fit: cover;
+}
+
+.alsv_popup_title {
+	padding-inline-end: 28px;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.alsv_popup_text {
+	margin: 0;
+	white-space: pre-line;
+}
+
+// "View in 3D": the scan loads only when the visitor asks (loadMode click, view.js)
+.alsv_start {
+	position: absolute;
+	z-index: 2;
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
+	margin: 0;
+	padding: 10px 18px;
+	border: 0;
+	border-radius: 999px;
+	background: #fff;
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+	color: #1e2226;
+	font: inherit;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.2;
+	cursor: pointer;
+	transition: transform 0.15s ease;
+
+	&:hover {
+		transform: scale(1.04);
+	}
+
+	&:focus-visible {
+		outline: 2px solid #fff;
+		outline-offset: 3px;
+	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+		fill: currentcolor;
+	}
+}
+
+// the visitor's buttons (Viewer.js tools()), once the scan is there
+.alsv_toolbar {
+	position: absolute;
+	z-index: 2;
+	inset-block-end: 12px;
+	inset-inline-end: 12px;
+	display: none;
+	gap: 6px;
+}
+
+.alsv_ready .alsv_toolbar {
+	display: flex;
+}
+
+.alsv_tool {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 8px;
+	background: rgba(20, 24, 28, 0.66);
+	// seen on a light background too
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+	color: #fff;
+	cursor: pointer;
+
+	&:hover {
+		background: rgba(20, 24, 28, 0.88);
+	}
+
+	&:focus-visible {
+		outline: 2px solid #fff;
+		outline-offset: 2px;
+	}
+
+	&[aria-pressed="true"] {
+		background: #fff;
+		color: #1e2226;
+	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+		fill: currentcolor;
+	}
+}
+
+// the visitor hid the hotspots
+.alsv_spots_off .alsv_spots,
+.alsv_spots_off .alsv_popup {
+	display: none;
+}
+
+// full screen: the browser's own, or (iPhone, a frame that does not allow it) the viewer over the whole page
+.alsv_viewer:fullscreen {
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+}
+
+.alsv_viewer.alsv_full {
+	position: fixed;
+	z-index: 100000;
+	inset: 0;
+	max-width: none;
+	margin: 0;
+	border-radius: 0;
+}
+
+.alsv_viewer:fullscreen .alsv_stage,
+.alsv_full .alsv_stage {
+	height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.alsv_start,
+	.alsv_poster,
+	.alsv_spot,
+	.alsv_spot_dot,
+	.alsv_spot_label {
+		transition: none;
+	}
+}

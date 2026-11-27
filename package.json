@@ -1,0 +1,31 @@
+{
+	"name": "softicon-splat-viewer",
+	"version": "1.0.0",
+	"description": "Gaussian splat and 3D scan viewer block for WordPress: orientation, camera and hotspots set in the block editor",
+	"main": "build/index.js",
+	"scripts": {
+		"lint": "eslint src",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"format": "wp-scripts format",
+		"tools": "[ -d ../softicon-tools ] && node ../softicon-tools/sync.js src/vendor/softicon-tools softicon-splat-viewer || true",
+		"prestart": "npm run -s tools",
+		"prebuild": "npm run -s tools",
+		"start": "wp-scripts start --webpack-copy-php",
+		"build": "wp-scripts build --webpack-copy-php",
+		"i18n-pot": "wp i18n make-pot . languages/softicon-splat-viewer.pot --exclude=\"src,node_modules,demo-scans\"",
+		"find-ds": "find . -name '.DS_Store' -not -path './node_modules/*' -delete",
+		"prezip": "[ -d node_modules ] || npm ci --no-audit --no-fund",
+		"zip": "rm -f softicon-splat-viewer.zip && printf '→ Building block\\n' && (npm run -s build >/dev/null 2>&1 || npm run build) && printf '→ Translations\\n' && (npm run -s i18n-pot >/dev/null 2>&1 || npm run i18n-pot) && npm run -s find-ds && printf '→ Zipping\\n' && cd .. && zip -rq softicon-splat-viewer/softicon-splat-viewer.zip softicon-splat-viewer/softicon-splat-viewer.php softicon-splat-viewer/index.php softicon-splat-viewer/includes softicon-splat-viewer/src softicon-splat-viewer/build softicon-splat-viewer/languages softicon-splat-viewer/readme.txt softicon-splat-viewer/licenses softicon-splat-viewer/package.json softicon-splat-viewer/package-lock.json softicon-splat-viewer/webpack.config.js -x '*/.DS_Store' '*.map' 'softicon-splat-viewer/src/render.php'",
+		"postzip": "printf '\\n✔ Zip ready: %s\\n  %s files, %s\\n\\n' \"$PWD/softicon-splat-viewer.zip\" \"$(unzip -l softicon-splat-viewer.zip | tail -1 | awk '{print $2}')\" \"$(du -h softicon-splat-viewer.zip | cut -f1 | tr -d ' ')\"",
+		"bundle": "npm run lint && npm run zip"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.9.0",
+		"copy-webpack-plugin": "^10.2.4"
+	},
+	"dependencies": {
+		"@sparkjsdev/spark": "2.4.0",
+		"three": "0.180.0"
+	}
+}

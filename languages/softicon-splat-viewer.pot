@@ -1,0 +1,734 @@
+# Copyright (C) 2026 softiconai
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: SoftIcon Splat Viewer 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/softicon-splat-viewer\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-27T05:15:42+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: softicon-splat-viewer\n"
+
+#. Plugin Name of the plugin
+#: softicon-splat-viewer.php
+msgid "SoftIcon Splat Viewer"
+msgstr ""
+
+#. Description of the plugin
+#: softicon-splat-viewer.php
+msgid "Show your 3D scans (Gaussian splats) on WordPress. Set the view, the camera and hotspots right in the block editor. No external services."
+msgstr ""
+
+#. Author of the plugin
+#: softicon-splat-viewer.php
+msgid "softiconai"
+msgstr ""
+
+#. Author URI of the plugin
+#: softicon-splat-viewer.php
+msgid "https://profiles.wordpress.org/softiconai/"
+msgstr ""
+
+#: build/render.php:57
+msgid "Turn on JavaScript to see this 3D scan."
+msgstr ""
+
+#: includes/class-shortcode.php:50
+#: includes/class-shortcode.php:52
+msgid "3D Scans"
+msgstr ""
+
+#: includes/class-shortcode.php:51
+msgid "3D Scan"
+msgstr ""
+
+#: includes/class-shortcode.php:53
+#: includes/class-shortcode.php:54
+msgid "Add a scan"
+msgstr ""
+
+#: includes/class-shortcode.php:55
+msgid "Edit scan"
+msgstr ""
+
+#: includes/class-shortcode.php:56
+msgid "All Scans"
+msgstr ""
+
+#: includes/class-shortcode.php:57
+msgid "No scans yet."
+msgstr ""
+
+#: includes/class-shortcode.php:58
+msgid "No scans in the trash."
+msgstr ""
+
+#: includes/class-shortcode.php:59
+msgid "Search scans"
+msgstr ""
+
+#: includes/class-shortcode.php:60
+msgid "New scan"
+msgstr ""
+
+#: includes/class-shortcode.php:61
+msgid "View scan"
+msgstr ""
+
+#: includes/class-shortcode.php:62
+msgid "Scan published."
+msgstr ""
+
+#: includes/class-shortcode.php:63
+msgid "Scan updated."
+msgstr ""
+
+#: includes/class-shortcode.php:64
+msgid "Scan reverted to draft."
+msgstr ""
+
+#: includes/class-shortcode.php:65
+msgid "Scan scheduled."
+msgstr ""
+
+#: includes/class-shortcode.php:66
+msgid "Scans list"
+msgstr ""
+
+#: includes/class-shortcode.php:67
+msgid "Filter scans list"
+msgstr ""
+
+#. translators: %s: the shortcode options that were left out, such as "heigth, load=later"
+#: includes/class-shortcode.php:106
+#, php-format
+msgid "3D scan shortcode: left out %s (a setting the shortcode cannot change, or a value it cannot take). Only people who can edit this scan see this note."
+msgstr ""
+
+#: includes/class-shortcode.php:175
+#: includes/class-shortcode.php:180
+#: build/index.js:18
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-shortcode.php:180
+msgid "Click to copy"
+msgstr ""
+
+#: includes/class-shortcode.php:190
+#: build/index.js:18
+msgid "Copied"
+msgstr ""
+
+#: build/index.js:1
+msgid "Reset"
+msgstr ""
+
+#: build/index.js:2
+#, js-format
+msgid "%s color"
+msgstr ""
+
+#: build/index.js:2
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: build/index.js:2
+msgid "Get support"
+msgstr ""
+
+#: build/index.js:2
+msgid "Rate Splat Viewer"
+msgstr ""
+
+#: build/index.js:2
+msgid "More plugins"
+msgstr ""
+
+#: build/index.js:2
+msgid "This is not a 3D scan file. Use a Gaussian splat file: .spz, .ply, .splat, .ksplat or .sog."
+msgstr ""
+
+#. translators: %s: a file size in megabytes, like 3.8
+#: build/index.js:5
+#, js-format
+msgid "%s MB"
+msgstr ""
+
+#. translators: %d: a file size in kilobytes
+#: build/index.js:8
+#, js-format
+msgid "%d KB"
+msgstr ""
+
+#: build/index.js:8
+msgid "3D scan"
+msgstr ""
+
+#: build/index.js:8
+msgid "Load on click"
+msgstr ""
+
+#. translators: %s: the file size in MB
+#: build/index.js:11
+#, js-format
+msgid "This file is %s MB, so it may load slowly on phones. A .spz file is usually about ten times smaller than a .ply file: most scan apps can export one. Or load it only when a visitor presses \"View in 3D\"."
+msgstr ""
+
+#: build/index.js:11
+#: build/index.js:17
+msgid "Replace"
+msgstr ""
+
+#: build/index.js:11
+#: build/index.js:17
+#: build/index.js:18
+msgid "Remove"
+msgstr ""
+
+#: build/index.js:11
+msgid "Gaussian splat files: .spz, .ply, .splat, .ksplat or .sog. A .spz file is the smallest and loads fastest."
+msgstr ""
+
+#: build/index.js:11
+msgid "Orientation"
+msgstr ""
+
+#: build/index.js:11
+msgid "Turn"
+msgstr ""
+
+#: build/index.js:11
+msgid "Many scans arrive upside down or on their side. Flip or turn the scan until it stands upright in the preview."
+msgstr ""
+
+#: build/index.js:11
+msgid "Flip upside down"
+msgstr ""
+
+#. translators: %s: an axis, X, Y or Z
+#: build/index.js:14
+#, js-format
+msgid "%s +90°"
+msgstr ""
+
+#. translators: %s: an axis, X, Y or Z
+#: build/index.js:17
+#, js-format
+msgid "Turn around %s"
+msgstr ""
+
+#: build/index.js:17
+msgid "Size"
+msgstr ""
+
+#: build/index.js:17
+msgid "Makes the scan bigger or smaller compared with the camera. Mostly useful for Walk mode."
+msgstr ""
+
+#: build/index.js:17
+#: build/index.js:18
+msgid "Wait until the scan has loaded in the preview, then try again."
+msgstr ""
+
+#: build/index.js:17
+msgid "Center the scan"
+msgstr ""
+
+#: build/index.js:17
+msgid "Moves the middle of the scan to the middle of the view, so it turns around itself."
+msgstr ""
+
+#: build/index.js:17
+msgid "Camera"
+msgstr ""
+
+#: build/index.js:17
+msgid "Mode"
+msgstr ""
+
+#: build/index.js:17
+msgid "Orbit turns around the scan, for objects. Walk moves inside it, for rooms: drag to look around, W A S D or the arrow keys to walk, two fingers on a phone."
+msgstr ""
+
+#: build/index.js:17
+msgid "Orbit"
+msgstr ""
+
+#: build/index.js:17
+msgid "Walk"
+msgstr ""
+
+#: build/index.js:17
+msgid "Start view"
+msgstr ""
+
+#: build/index.js:17
+msgid "Turn and zoom the scan in the preview until it looks right, then press \"Use the current view\". Visitors start from there."
+msgstr ""
+
+#: build/index.js:17
+#: build/index.js:18
+msgid "Use the current view"
+msgstr ""
+
+#: build/index.js:17
+msgid "Automatic"
+msgstr ""
+
+#: build/index.js:17
+msgid "Visitors start from the view you saved."
+msgstr ""
+
+#: build/index.js:17
+msgid "Automatic: the whole scan fills the view."
+msgstr ""
+
+#: build/index.js:17
+msgid "Field of view"
+msgstr ""
+
+#: build/index.js:17
+msgid "Degrees. Wider shows more of a room, narrower looks closer."
+msgstr ""
+
+#: build/index.js:17
+#: build/index.js:18
+#: build/view.js:7
+msgid "Turn on its own"
+msgstr ""
+
+#: build/index.js:17
+msgid "The scan turns slowly until the visitor touches it. Off for visitors who ask their device for less motion."
+msgstr ""
+
+#: build/index.js:17
+msgid "Turning speed"
+msgstr ""
+
+#: build/index.js:17
+msgid "Zoom with the wheel and pinch"
+msgstr ""
+
+#: build/index.js:17
+msgid "Turn off when the scan sits in a long page, so the mouse wheel scrolls the page instead. In Walk mode the wheel moves forward and back."
+msgstr ""
+
+#: build/index.js:17
+msgid "Untitled"
+msgstr ""
+
+#: build/index.js:17
+msgid "Not shown yet"
+msgstr ""
+
+#: build/index.js:17
+msgid "Type"
+msgstr ""
+
+#: build/index.js:17
+msgid "Info card"
+msgstr ""
+
+#: build/index.js:17
+msgid "Link"
+msgstr ""
+
+#: build/index.js:17
+msgid "Label"
+msgstr ""
+
+#: build/index.js:17
+msgid "Title"
+msgstr ""
+
+#: build/index.js:17
+msgid "Shown beside the hotspot when the mouse is over it."
+msgstr ""
+
+#: build/index.js:17
+msgid "Link address"
+msgstr ""
+
+#: build/index.js:17
+msgid "Text"
+msgstr ""
+
+#: build/index.js:17
+msgid "Image"
+msgstr ""
+
+#: build/index.js:17
+#: build/index.js:18
+msgid "Choose an image"
+msgstr ""
+
+#: build/index.js:17
+msgid "Add the link address. Until then this hotspot is not shown on the page."
+msgstr ""
+
+#: build/index.js:17
+msgid "Add a title, text or image. Until then this hotspot is not shown on the page."
+msgstr ""
+
+#: build/index.js:17
+msgid "To move it, drag the hotspot in the preview."
+msgstr ""
+
+#: build/index.js:17
+msgid "Remove hotspot"
+msgstr ""
+
+#: build/index.js:17
+msgid "Hotspots"
+msgstr ""
+
+#: build/index.js:17
+msgid "Add"
+msgstr ""
+
+#: build/index.js:17
+msgid "Press \"Add a hotspot\", then click on the scan in the preview where it goes. With the keyboard: Enter on the preview places it in the middle of the view, Esc stops."
+msgstr ""
+
+#: build/index.js:17
+msgid "Stop adding"
+msgstr ""
+
+#: build/index.js:17
+msgid "Add a hotspot"
+msgstr ""
+
+#: build/index.js:17
+msgid "Click on the scan in the preview where the hotspot goes."
+msgstr ""
+
+#. translators: %d: the most hotspots one scan can have
+#: build/index.js:18
+#, js-format
+msgid "A scan can have %d hotspot."
+msgid_plural "A scan can have %d hotspots."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/index.js:18
+msgid "The poster could not be saved."
+msgstr ""
+
+#: build/index.js:18
+msgid "Poster"
+msgstr ""
+
+#: build/index.js:18
+msgid "Picture"
+msgstr ""
+
+#: build/index.js:18
+msgid "Shown until the 3D scan has loaded, to visitors whose browser cannot show 3D, and to search engines."
+msgstr ""
+
+#: build/index.js:18
+msgid "Poster saved to the Media Library."
+msgstr ""
+
+#: build/index.js:18
+msgid "Turn the scan in the preview until it looks right, then press \"Use the current view\"."
+msgstr ""
+
+#: build/index.js:18
+msgid "Description (alt text)"
+msgstr ""
+
+#: build/index.js:18
+msgid "What the scan shows, for visitors who cannot see it and for search engines. Also the name screen readers hear for the viewer."
+msgstr ""
+
+#: build/index.js:18
+msgid "Use 100 to 3000 px, or 10 to 100 vh. Until then the default height is used."
+msgstr ""
+
+#: build/index.js:18
+msgid "This color cannot be used here. Pick another one, or type a #hex color."
+msgstr ""
+
+#: build/index.js:18
+msgid "Display"
+msgstr ""
+
+#: build/index.js:18
+msgid "Height"
+msgstr ""
+
+#: build/index.js:18
+msgid "100 to 3000 px, or 10 to 100 vh (a share of the screen height: 100vh fills the screen). Empty: 480 px."
+msgstr ""
+
+#: build/index.js:18
+msgid "Height on phones"
+msgstr ""
+
+#: build/index.js:18
+msgid "For screens up to 600px wide. Empty: the same as above."
+msgstr ""
+
+#: build/index.js:18
+msgid "Rounded corners (px)"
+msgstr ""
+
+#: build/index.js:18
+msgid "Background"
+msgstr ""
+
+#: build/index.js:18
+msgid "Behind the scan. None lets the page show through. The poster you capture gets the same background."
+msgstr ""
+
+#: build/index.js:18
+msgid "Dark"
+msgstr ""
+
+#: build/index.js:18
+msgid "Light"
+msgstr ""
+
+#: build/index.js:18
+msgid "None"
+msgstr ""
+
+#: build/index.js:18
+msgid "Colors"
+msgstr ""
+
+#: build/index.js:18
+msgid "Own background"
+msgstr ""
+
+#: build/index.js:18
+msgid "Hotspot"
+msgstr ""
+
+#: build/index.js:18
+msgid "Buttons for visitors"
+msgstr ""
+
+#: build/index.js:18
+msgid "In the corner of the viewer, once the scan has loaded."
+msgstr ""
+
+#: build/index.js:18
+#: build/view.js:7
+msgid "Back to the start view"
+msgstr ""
+
+#: build/index.js:18
+#: build/view.js:7
+msgid "Full screen"
+msgstr ""
+
+#: build/index.js:18
+msgid "Show or hide the hotspots"
+msgstr ""
+
+#: build/index.js:18
+msgid "Only when the scan has hotspots."
+msgstr ""
+
+#: build/index.js:18
+msgid "Visitors start or stop the turning (Orbit only)."
+msgstr ""
+
+#: build/index.js:18
+#: build/view.js:7
+msgid "Walk inside"
+msgstr ""
+
+#: build/index.js:18
+msgid "Visitors switch between going around the scan and walking inside it."
+msgstr ""
+
+#: build/index.js:18
+msgid "Loading"
+msgstr ""
+
+#: build/index.js:18
+msgid "Load the scan"
+msgstr ""
+
+#: build/index.js:18
+msgid "On click, the page shows the poster with a \"View in 3D\" button, and nothing of the scan loads before a visitor presses it. Good for big files and long pages. The preview here always loads."
+msgstr ""
+
+#: build/index.js:18
+msgid "When in view"
+msgstr ""
+
+#: build/index.js:18
+msgid "On click"
+msgstr ""
+
+#: build/index.js:18
+msgid "Quality"
+msgstr ""
+
+#: build/index.js:18
+msgid "Auto draws a little softer on phones, so the scan turns smoothly. Low is quickest everywhere."
+msgstr ""
+
+#: build/index.js:18
+msgid "Auto"
+msgstr ""
+
+#: build/index.js:18
+msgid "High"
+msgstr ""
+
+#: build/index.js:18
+msgid "Low"
+msgstr ""
+
+#: build/index.js:18
+msgid "Paste it in a WooCommerce product description, the Classic Editor, Elementor or any page builder to show this scan there."
+msgstr ""
+
+#: build/index.js:18
+msgid "Copy"
+msgstr ""
+
+#: build/index.js:18
+msgid "It shows the scan once it is published."
+msgstr ""
+
+#: build/index.js:18
+msgid "Change a setting in one place"
+msgstr ""
+
+#: build/index.js:18
+msgid "Add a setting to the shortcode to change it only where you paste it; this scan keeps its own everywhere else. For example:"
+msgstr ""
+
+#: build/index.js:18
+msgid "More:"
+msgstr ""
+
+#: build/index.js:18
+msgid "Yes or no settings take yes, no, true, false, 1 or 0. A name or value the scan does not know is left out, with a note that only its editors see."
+msgstr ""
+
+#: build/index.js:18
+msgid "Help"
+msgstr ""
+
+#: build/index.js:18
+msgid "Email:"
+msgstr ""
+
+#: build/index.js:18
+msgid "Click on the scan where the hotspot goes. Esc stops."
+msgstr ""
+
+#: build/index.js:18
+msgid "No scan there. Click on the scan itself."
+msgstr ""
+
+#: build/index.js:18
+msgid "Splat Viewer"
+msgstr ""
+
+#: build/index.js:18
+msgid "Upload a 3D scan (Gaussian splat) or choose one from the Media Library: .spz, .ply, .splat, .ksplat or .sog. Phone apps such as Scaniverse, Polycam or Luma make these files."
+msgstr ""
+
+#. translators: %s: how much of the 3D scan has loaded, like 40%
+#: build/view.js:4
+#, js-format
+msgid "Loading the 3D scan… %s"
+msgstr ""
+
+#: build/view.js:4
+msgid "This browser cannot show 3D scans (WebGL 2 is off or missing)."
+msgstr ""
+
+#: build/view.js:4
+msgid "The 3D scan could not be loaded."
+msgstr ""
+
+#: build/view.js:4
+msgid "3D scan. Drag or use the arrow keys to turn it; scroll, pinch or + and − to zoom."
+msgstr ""
+
+#: build/view.js:4
+msgid "3D scan of a place. Drag to look around; walk with W, A, S, D or the arrow keys, or with two fingers."
+msgstr ""
+
+#. translators: %d: the hotspot's number on the 3D scan
+#: build/view.js:7
+#, js-format
+msgid "Hotspot %d"
+msgstr ""
+
+#: build/view.js:7
+msgid "Close"
+msgstr ""
+
+#: build/view.js:7
+msgid "View in 3D"
+msgstr ""
+
+#: build/view.js:7
+msgid "Show the hotspots"
+msgstr ""
+
+#: build/block.json
+msgctxt "block title"
+msgid "Splat Viewer"
+msgstr ""
+
+#: build/block.json
+msgctxt "block description"
+msgid "Show a 3D scan (Gaussian splat) that visitors can turn, zoom and walk through, with hotspots. Set it up right in the block editor."
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "gaussian splat"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "3d scan"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "splat"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "3d"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "spz"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "ply"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "scan"
+msgstr ""
+
+#: build/block.json
+msgctxt "block keyword"
+msgid "3d viewer"
+msgstr ""
